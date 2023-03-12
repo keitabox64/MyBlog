@@ -5,8 +5,8 @@
 # 更新内容
 
 2029/3/12: ファーストコミット
-2023/2/1 ～ 3/12: storybook を用いてデザインからコンポーネント制作
-2023/1/6 ～ 2/1: ブログデザイン依頼　デザイン制作者[@Vvn2L](https://twitter.com/Vvn2L)
+  2023/2/1 ～ 3/12: storybook を用いてデザインからコンポーネント制作
+  2023/1/6 ～ 2/1: ブログデザイン依頼　デザイン制作者[@Vvn2L](https://twitter.com/Vvn2L)
 
 # どういうことをやっているか
 
@@ -25,5 +25,5 @@
 ## 作者
 
 Keita Watanabe
-Twitter[@ke_ke_ke_310](https://twitter.com/ke_ke_ke_310)
-ポートフォリオサイト[https://keita-watanabe.com/](https://keita-watanabe.com/)
+  Twitter[@ke_ke_ke_310](https://twitter.com/ke_ke_ke_310)
+  ポートフォリオサイト[https://keita-watanabe.com/](https://keita-watanabe.com/)
