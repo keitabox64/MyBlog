@@ -24,6 +24,6 @@
 
 ## 作者
 
-Keita Watanabe
-  Twitter[@ke_ke_ke_310](https://twitter.com/ke_ke_ke_310)
-  ポートフォリオサイト[https://keita-watanabe.com/](https://keita-watanabe.com/)
+Keita Watanabe  
+Twitter[@ke_ke_ke_310](https://twitter.com/ke_ke_ke_310)  
+ポートフォリオサイト[https://keita-watanabe.com/](https://keita-watanabe.com/)
