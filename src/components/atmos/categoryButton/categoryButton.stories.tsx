@@ -3,7 +3,7 @@ import React from 'react'
 import Button from './categoryButton'
 
 export default {
-  title: 'Button',
+  title: 'Atoms/Button',
   component: Button,
 } as ComponentMeta<typeof Button>
 

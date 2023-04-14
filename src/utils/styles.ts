@@ -28,6 +28,7 @@ export function toPropValue<T>(propKey: string, prop?: Responsive<T>, theme?: Ap
     const result = []
     for (const responsiveKey in prop) {
       if (responsiveKey === 'base') {
+        // デフォルトのスタイル
         result.push(`${propKey}: ${toThemeValueIfNeeded(propKey, prop[responsiveKey], theme)};`)
       } else if (
         responsiveKey === 'sm' ||
@@ -35,6 +36,7 @@ export function toPropValue<T>(propKey: string, prop?: Responsive<T>, theme?: Ap
         responsiveKey === 'lg' ||
         responsiveKey === 'xl'
       ) {
+        // メディアクエリでのスタイル
         const breakpoint = BREAKPOINTS[responsiveKey]
         const style = `${propKey}: ${toThemeValueIfNeeded(propKey, prop[responsiveKey], theme)};`
         result.push(`@media screen and (min-width: ${breakpoint}) {${style}}`)

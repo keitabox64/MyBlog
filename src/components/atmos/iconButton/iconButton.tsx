@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
-interface ImageProps {
+type ImageProps = {
   imagePath: any
   imageLink?: string
 }

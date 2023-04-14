@@ -3,7 +3,7 @@ import React from 'react'
 import IconButton from './iconButton'
 
 export default {
-  title: 'IconButton',
+  title: 'Atoms/IconButton',
   component: IconButton,
 } as ComponentMeta<typeof IconButton>
 

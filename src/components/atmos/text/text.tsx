@@ -40,35 +40,65 @@ export type TextProps = {
 }
 
 const variants = {
+  // extraSmall: {
+  //   fontSize: 'extraSmall',
+  //   letterSpacing: 0,
+  //   lineHeight: 0,
+  // },
+  // small: {
+  //   fontSize: 'small',
+  //   letterSpacing: 1,
+  //   lineHeight: 1,
+  // },
+  // medium: {
+  //   fontSize: 'medium',
+  //   letterSpacing: 2,
+  //   lineHeight: 2,
+  // },
+  // mediumLarge: {
+  //   fontSize: 'mediumLarge',
+  //   letterSpacing: 3,
+  //   lineHeight: 3,
+  // },
+  // large: {
+  //   fontSize: 'large',
+  //   letterSpacing: 4,
+  //   lineHeight: 4,
+  // },
+  // extraLarge: {
+  //   fontSize: 'extraLarge',
+  //   letterSpacing: 5,
+  //   lineHeight: 5,
+  // },
   extraSmall: {
-    fontSize: 'extraSmall',
-    letterSpacing: 0,
-    lineHeight: 0,
+    fontSize: { base: 'extraSmall' } as Responsive<FontSize>,
+    letterSpacing: { base: 0 } as Responsive<LetterSpacing>,
+    lineHeight: { base: 0 } as Responsive<LineHeight>,
   },
   small: {
-    fontSize: 'small',
-    letterSpacing: 1,
-    lineHeight: 1,
+    fontSize: { base: 'small' } as Responsive<FontSize>,
+    letterSpacing: { base: 1 } as Responsive<LetterSpacing>,
+    lineHeight: { base: 1 } as Responsive<LineHeight>,
   },
   medium: {
-    fontSize: 'medium',
-    letterSpacing: 2,
-    lineHeight: 2,
+    fontSize: { base: 'medium' } as Responsive<FontSize>,
+    letterSpacing: { base: 2 } as Responsive<LetterSpacing>,
+    lineHeight: { base: 2 } as Responsive<LineHeight>,
   },
   mediumLarge: {
-    fontSize: 'mediumLarge',
-    letterSpacing: 3,
-    lineHeight: 3,
+    fontSize: { base: 'mediumLarge' } as Responsive<FontSize>,
+    letterSpacing: { base: 3 } as Responsive<LetterSpacing>,
+    lineHeight: { base: 3 } as Responsive<LineHeight>,
   },
   large: {
-    fontSize: 'large',
-    letterSpacing: 4,
-    lineHeight: 4,
+    fontSize: { base: 'large' } as Responsive<FontSize>,
+    letterSpacing: { base: 4 } as Responsive<LetterSpacing>,
+    lineHeight: { base: 4 } as Responsive<LineHeight>,
   },
   extraLarge: {
-    fontSize: 'extraLarge',
-    letterSpacing: 5,
-    lineHeight: 5,
+    fontSize: { base: 'extraLarge' } as Responsive<FontSize>,
+    letterSpacing: { base: 5 } as Responsive<LetterSpacing>,
+    lineHeight: { base: 5 } as Responsive<LineHeight>,
   },
 }
 
@@ -77,10 +107,14 @@ const Text = styled.span<TextProps>`
     //バリアントのスタイルの適用
     if (variant && variants[variant]) {
       const styles = []
-      !fontSize && styles.push(toPropValue('font-size', variants[variant].fontSize, theme))
+      !fontSize &&
+        styles.push(toPropValue<FontSize>('font-size', variants[variant].fontSize, theme))
       !letterSpacing &&
-        styles.push(toPropValue('letter-spaceing', variants[variant].letterSpacing, theme))
-      !lineHeight && styles.push(toPropValue('line-height', variants[variant].lineHeight, theme))
+        styles.push(
+          toPropValue<LetterSpacing>('letter-spacing', variants[variant].letterSpacing, theme),
+        )
+      !lineHeight &&
+        styles.push(toPropValue<LineHeight>('line-height', variants[variant].lineHeight, theme))
       return styles.join('\n')
     }
   }}

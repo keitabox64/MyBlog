@@ -3,7 +3,7 @@ import React from 'react'
 import LinkBar from './linkBar'
 
 export default {
-  title: 'LinkBar',
+  title: 'Molecules/LinkBar',
   component: LinkBar,
 } as ComponentMeta<typeof LinkBar>
 
