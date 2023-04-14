@@ -1,6 +1,6 @@
 import { RssPost, fetchRssPosts } from './rss'
 
-const noteUrl = '../pages/api/note-rss-proxy'
+const noteUrl = '/api/note-rss-proxy'
 const zennUrl = 'https://zenn.dev/k_tech/feed?include_scraps=1'
 
 const getAggregatedPosts = async (): Promise<RssPost[]> => {
