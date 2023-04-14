@@ -20,7 +20,7 @@ const fetchRssPosts = async (url: string): Promise<RssPost[]> => {
     (entry: any): RssPost => ({
       title: entry.title[0],
       link: entry.link[0].$.href,
-      publishedAt: new Date(entry.published[0]),
+      publishedAt: new Date(entry.pubDate[0]),
     }),
   )
 
