@@ -16,7 +16,9 @@ const getAggregatedPosts = async (): Promise<RssPost[]> => {
 
   // 必要に応じて、結合したデータを整形・ソート
   // 例: 公開日時の降順でソート
-  aggregatedPosts.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+  aggregatedPosts.sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  )
 
   return aggregatedPosts
 }

@@ -139,7 +139,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
   )
 }
 
-export const getServerSideProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAggregatedPosts()
 
   return { props: { posts }, revalidate: 60 }
