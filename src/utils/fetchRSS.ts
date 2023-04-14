@@ -1,6 +1,7 @@
 import { RssPost, fetchRssPosts } from './rss'
 
-const noteUrl = '/api/note-rss-proxy'
+const vercelDomain = process.env.NEXT_PUBLIC_VERCEL_URL
+const noteUrl = `${vercelDomain}/api/note-rss-proxy`
 const zennUrl = 'https://zenn.dev/k_tech/feed?include_scraps=1'
 
 const getAggregatedPosts = async (): Promise<RssPost[]> => {
