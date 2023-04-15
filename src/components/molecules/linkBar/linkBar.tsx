@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import colors from '../../../themes/colors'
-import fontSizes from '../../../themes/fontSizes'
+import { theme } from '../../../themes'
 import IconButton from '../../atmos/iconButton/iconButton'
 
 const FormatDesign = styled.div`
-  background-color: ${colors.white};
+  background-color: ${theme.colors.white};
   border: none;
   border-radius: 8px;
   padding: 15px 26px;
@@ -15,8 +14,8 @@ const FormatDesign = styled.div`
   align-items: center;
 `
 const Title = styled.h3`
-  color: ${colors.black};
-  font-size: ${fontSizes.mediumLarge};
+  color: ${theme.colors.black};
+  font-size: ${theme.fontSizes.mediumLarge};
 `
 
 const Links = styled.div`

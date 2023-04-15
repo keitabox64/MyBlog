@@ -1,10 +1,8 @@
 import { RssPost, fetchRssPosts } from './rss'
 
 const vercelDomain = process.env.NEXT_PUBLIC_VERCEL_URL
-console.log('Vercel Domain:', vercelDomain)
 const noteUrl = `${vercelDomain}/api/note-rss-proxy`
-// const noteUrl = 'https://zenn.dev/feed'
-const zennUrl = 'https://zenn.dev/k_tech/feed?include_scraps=1'
+const zennUrl = 'https://zenn.dev/daichi_gamedev/feed?all=1'
 
 const getAggregatedPosts = async (): Promise<RssPost[]> => {
   // 各サービスから記事データを取得

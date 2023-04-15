@@ -1,17 +1,75 @@
-import { Inter } from '@next/font/google'
-import { GetStaticProps } from 'next'
+/* eslint-disable @next/next/no-img-element */
+import { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
+import styled from 'styled-components'
 import { getAggregatedPosts } from '../utils/fetchRSS'
+import { Profile } from '@/components/molecules/profile/profile'
+import Category from '@/components/organism/category/category'
+import { LastArticles } from '@/components/organism/latestArticles/lastArticles'
+import { ArticleList } from '@/components/template/ArticleList/ArticleList'
 import styles from '@/styles/Home.module.css'
-import { RssPost } from '@/utils/rss'
+import { theme } from '@/themes'
+import { RssPost, fetchRssPosts } from '@/utils/rss'
 
-const inter = Inter({ subsets: ['latin'] })
-type HomeProps = {
+const Main = styled.main`
+  padding: 0;
+  background: ${theme.colors.primary};
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 195px;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    background: repeating-linear-gradient(
+      ${theme.colors.primary},
+      ${theme.colors.primary} 61px,
+      ${theme.colors.gray1} 61px,
+      ${theme.colors.gray1} 65px
+    );
+    z-index: 1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 325px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      ${theme.colors.primary},
+      ${theme.colors.primary} 30px,
+      ${theme.colors.gray1} 30px,
+      ${theme.colors.gray1} 31px
+    );
+    z-index: 0;
+  }
+`
+const LogoImage = styled.img`
+  width: 400px;
+  margin: 60px auto;
+  position: relative;
+  z-index: 5;
+`
+
+const BlogSection = styled.section`
+  positon: relative;
+  z-index: 5;
+`
+type IndexProps = {
   posts: RssPost[]
 }
 
-const Home: React.FC<HomeProps> = ({ posts }) => {
+const IndexPage: NextPage<IndexProps> = ({ posts }) => {
+  const notePosts = posts.filter((post) => post.source === 'note.com')
+  const zennPosts = posts.filter((post) => post.source === 'zenn.dev')
+  const [currentCategory, setCurrentCategory] = useState<'note' | 'zenn' | undefined>(undefined)
+  const handleCategoryChange = (source: 'note' | 'zenn' | undefined) => {
+    setCurrentCategory(source)
+  }
   return (
     <>
       <Head>
@@ -19,122 +77,28 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          {/* <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div> */}
-        </div>
-        <div>
-          <h1>Aggregated Blog</h1>
-          <ul>
-            {posts.map((post, index) => (
-              <li key={index}>
-                <a href={post.link} target='_blank' rel='noopener noreferrer'>
-                  {post.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
+      <Main className={styles.main}>
+        <a href='#'>
+          <LogoImage src='/images/logo.png' alt='logo' />
+        </a>
+        <BlogSection>
+          <Category
+            notePosts={notePosts}
+            zennPosts={zennPosts}
+            onCategoryChange={handleCategoryChange}
           />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div> */}
-      </main>
+          {/* <LastArticles posts={posts} /> */}
+          {/* <Profile /> */}
+          {currentCategory === 'note' ? (
+            <ArticleList posts={notePosts} />
+          ) : currentCategory === 'zenn' ? (
+            <ArticleList posts={zennPosts} />
+          ) : (
+            <ArticleList posts={posts} />
+          )}
+        </BlogSection>
+      </Main>
     </>
   )
 }
@@ -145,4 +109,4 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { posts }, revalidate: 60 }
 }
 
-export default Home
+export default IndexPage
