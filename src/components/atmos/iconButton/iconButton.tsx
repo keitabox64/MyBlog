@@ -9,6 +9,9 @@ type ImageProps = {
 const AnchorImage = styled.a`
   display: block;
   text-align: center;
+  &:hover {
+    transform: translateY(-2px);
+  }
 `
 
 const IconButton: React.FC<ImageProps> = ({ imageLink, imagePath }) => (

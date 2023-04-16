@@ -12,6 +12,9 @@ const FormatDesign = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
+    width: 660px;
+  }
 `
 const Title = styled.h3`
   color: ${theme.colors.black};

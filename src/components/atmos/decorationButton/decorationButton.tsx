@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import colors from '../../../themes/colors'
-import fontSizes from '../../../themes/fontSizes'
+import { theme } from '../../../themes'
 
 const AnchorLink = styled.a`
-  background-color: ${colors.black};
+  background-color: ${theme.colors.black};
   border: none;
   border-radius: 8px;
   padding: 15px 26px;
@@ -12,10 +11,16 @@ const AnchorLink = styled.a`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &:hover {
+    transform: translateY(-2px);
+  }
+  @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
+    width: 660px;
+  }
 `
 const LinkTitle = styled.h3`
-  color: ${colors.white};
-  font-size: ${fontSizes.mediumLarge};
+  color: ${theme.colors.white};
+  font-size: ${theme.fontSizes.mediumLarge};
 `
 
 const Image = styled.img`

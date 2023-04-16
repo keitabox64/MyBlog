@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { theme } from '@/themes'
 import { RssPost } from '@/utils/rss'
@@ -14,6 +14,9 @@ const LastArticlesSection = styled.div`
   width: 320px;
   height: 445px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
+    width: 660px;
+  }
 `
 
 const Title = styled.h3`
@@ -33,6 +36,9 @@ const StyledA = styled.a`
   display: flex;
   flex-direction: row;
   margin: 0 24px;
+  &:hover {
+    transform: translateY(-2px);
+  }
 `
 const SquareThumnail = styled.img`
   width: 100px;

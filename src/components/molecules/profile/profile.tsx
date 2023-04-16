@@ -11,6 +11,10 @@ const ProfileFormatDesign = styled.div`
   flex-direction: column;
   justify-content: start;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
+    width: 660px;
+    height: 184px;
+  }
 `
 const NameContainer = styled.div`
   display: flex;
@@ -46,6 +50,9 @@ const ProfileText = styled.p`
   width: 272px;
   margin: 24px;
   font-size: ${theme.fontSizes.small}px;
+  @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
+    width: 612px;
+  }
 `
 
 const Profile: React.FC = () => {

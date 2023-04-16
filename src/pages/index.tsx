@@ -1,17 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useState } from 'react'
 import styled from 'styled-components'
 import { getAggregatedPosts } from '../utils/fetchRSS'
-import { Profile } from '@/components/molecules/profile/profile'
-import Category from '@/components/organism/category/category'
-import { LastArticles } from '@/components/organism/latestArticles/lastArticles'
 import { ArticleList } from '@/components/template/ArticleList/ArticleList'
+import { Footer } from '@/components/template/Footer/Footer'
+import { SideBar } from '@/components/template/SideBar/SideBar'
 import styles from '@/styles/Home.module.css'
 import { theme } from '@/themes'
-import { RssPost, fetchRssPosts } from '@/utils/rss'
+import { RssPost } from '@/utils/rss'
 
 const Main = styled.main`
   padding: 0;
@@ -26,8 +24,8 @@ const Main = styled.main`
     height: 130px;
     background: repeating-linear-gradient(
       ${theme.colors.primary},
-      ${theme.colors.primary} 61px,
-      ${theme.colors.gray1} 61px,
+      ${theme.colors.primary} 62px,
+      ${theme.colors.gray1} 63px,
       ${theme.colors.gray1} 65px
     );
     z-index: 1;
@@ -38,14 +36,17 @@ const Main = styled.main`
     top: 325px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 90%;
     background: repeating-linear-gradient(
       ${theme.colors.primary},
       ${theme.colors.primary} 30px,
-      ${theme.colors.gray1} 30px,
+      ${theme.colors.gray1} 30.5px,
       ${theme.colors.gray1} 31px
     );
     z-index: 0;
+    @media (width <= ${theme.breakpoints.mobile}) {
+      height: 100%;
+    }
   }
 `
 const LogoImage = styled.img`
@@ -58,6 +59,11 @@ const LogoImage = styled.img`
 const BlogSection = styled.section`
   positon: relative;
   z-index: 5;
+  display: flex;
+  flex-direction: row;
+  @media (width < ${theme.breakpoints.pc}) {
+    flex-direction: column;
+  }
 `
 type IndexProps = {
   posts: RssPost[]
@@ -82,14 +88,6 @@ const IndexPage: NextPage<IndexProps> = ({ posts }) => {
           <LogoImage src='/images/logo.png' alt='logo' />
         </a>
         <BlogSection>
-          <Category
-            notePosts={notePosts}
-            zennPosts={zennPosts}
-            onCategoryChange={handleCategoryChange}
-          />
-
-          {/* <LastArticles posts={posts} /> */}
-          {/* <Profile /> */}
           {currentCategory === 'note' ? (
             <ArticleList posts={notePosts} />
           ) : currentCategory === 'zenn' ? (
@@ -97,8 +95,10 @@ const IndexPage: NextPage<IndexProps> = ({ posts }) => {
           ) : (
             <ArticleList posts={posts} />
           )}
+          <SideBar posts={posts} onCategoryChange={handleCategoryChange} />
         </BlogSection>
       </Main>
+      <Footer />
     </>
   )
 }

@@ -3,7 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const noteRssUrl = 'https://note.com/k_notebook/rss'
+    const NoteRSSDomain = process.env.NEXT_PUBLIC_NOTE_URL
+    const noteRssUrl = `${NoteRSSDomain}`
     const response = await axios.get(noteRssUrl, { responseType: 'text' })
 
     res.setHeader('Content-Type', 'application/rss+xml')

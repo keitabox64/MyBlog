@@ -11,7 +11,7 @@ const FormatCardDesign = styled.a`
   border: none;
   border-radius: 8px;
   width: 320px;
-  height: 400px;
+  height: 320px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

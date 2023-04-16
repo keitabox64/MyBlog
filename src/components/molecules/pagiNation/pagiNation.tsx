@@ -12,7 +12,8 @@ const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-top: 16px;
+  margin-top: 60px;
+  margin-bottom: 90px;
 `
 
 const PaginationButton = styled.button`
@@ -20,15 +21,25 @@ const PaginationButton = styled.button`
   border: none;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
   color: ${theme.colors.black};
   padding: 16px 16px;
   margin: 0 8px;
   cursor: pointer;
   font-size: ${theme.fontSizes.mediumLarge}px;
+  @media (width <= ${theme.breakpoints.mobile}) {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: ${theme.fontSizes.medium}px;
+  }
 `
 
 const StyledSpan = styled.span`
   margin-top: 7px;
+  @media (width <= ${theme.breakpoints.mobile}) {
+    margin-top: 5px;
+  }
 `
 const PaginationNumberButton = styled(PaginationButton)<{ selected: boolean }>`
   ${({ selected }) =>
@@ -39,13 +50,23 @@ const PaginationNumberButton = styled(PaginationButton)<{ selected: boolean }>`
       border-radius: 50%;
       background-color: ${theme.colors.backgroundBlack};
       color: ${theme.colors.white};
+      @media (width <= ${theme.breakpoints.mobile}) {
+        width: 40px;
+        height: 40px;
+      }
     `}
+  transition: 0.8s;
   &:hover {
+    transition: 0.8s;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: ${theme.colors.backgroundBlack};
-    color: ${theme.colors.white};
+    transform: scale(1.05);
+    border: 1px solid ${theme.colors.backgroundBlack};
+    @media (width <= ${theme.breakpoints.mobile}) {
+      width: 40px;
+      height: 40px;
+    }
   }
 `
 const shouldDisplayPageNumber = (currentPage: number, pageNumber: number, totalPages: number) => {

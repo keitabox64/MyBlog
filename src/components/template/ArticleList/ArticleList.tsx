@@ -13,8 +13,10 @@ type ArticleListProps = {
 const ArticleListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 16px;
-  row-gap: 32px;
+  grid-gap: 20px;
+  @media (width <= ${theme.breakpoints.mobile}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 const getPaginatedPosts = (
@@ -32,7 +34,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ posts }) => {
   const totalPages = Math.ceil(posts.length / 6)
   const postsToDisplay = getPaginatedPosts(posts, currentPage, 6)
   return (
-    <>
+    <div>
       <ArticleListContainer>
         {postsToDisplay.map((post, index) => (
           <ArticleCard key={index} post={post} />
@@ -43,7 +45,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ posts }) => {
         totalPages={totalPages}
         onPageChange={(pageNumber) => setCurrentPage(pageNumber)}
       />
-    </>
+    </div>
   )
 }
 
