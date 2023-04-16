@@ -29,7 +29,7 @@ const Image = styled.img`
 
 const DecorationButton: React.FC = () => {
   return (
-    <AnchorLink href='https://keita-watanabe.com/about'>
+    <AnchorLink href='https://keita-watanabe.com/'>
       <LinkTitle>Portfolio Site</LinkTitle>
       <Image src='/images/external_white.png' alt='icon' />
     </AnchorLink>
