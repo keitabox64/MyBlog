@@ -123,7 +123,7 @@ const IndexPage: NextPage<IndexProps> = ({ posts }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAggregatedPosts()
 
-  return { props: { posts }, revalidate: 60 }
+  return { props: { posts }, revalidate: 86400 }
 }
 
 export default IndexPage
