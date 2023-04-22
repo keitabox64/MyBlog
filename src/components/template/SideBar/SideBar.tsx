@@ -17,7 +17,7 @@ const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  @media (width < ${theme.breakpoints.pc}) {
+  @media (max-width: ${theme.breakpoints.pc}) {
     margin: 0 auto;
   }
 `
@@ -28,10 +28,7 @@ const SpaceDiv = styled.div`
 const SideBar: React.FC<SideBarProps> = ({ posts, onCategoryChange }) => {
   const notePosts = posts.filter((post) => post.source === 'note.com')
   const zennPosts = posts.filter((post) => post.source === 'zenn.dev')
-  const [currentCategory, setCurrentCategory] = useState<'note' | 'zenn' | undefined>(undefined)
-  const handleCategoryChange = (source: 'note' | 'zenn' | undefined) => {
-    setCurrentCategory(source)
-  }
+
   return (
     <SideBarContainer>
       <SpaceDiv>

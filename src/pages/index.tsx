@@ -11,6 +11,10 @@ import { theme } from '@/themes'
 import { RssPost } from '@/utils/rss'
 
 const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   padding: 0;
   background: ${theme.colors.primary};
   position: relative;
@@ -43,9 +47,6 @@ const Main = styled.main`
       ${theme.colors.gray1} 31px
     );
     z-index: 0;
-    @media (width <= ${theme.breakpoints.mobile}) {
-      height: 100%;
-    }
   }
 `
 const LogoImage = styled.img`
@@ -53,6 +54,10 @@ const LogoImage = styled.img`
   margin: 60px auto;
   position: relative;
   z-index: 5;
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    width: 300px;
+    margin: 75px auto;
+  }
 `
 
 const BlogSection = styled.section`
@@ -60,7 +65,7 @@ const BlogSection = styled.section`
   z-index: 5;
   display: flex;
   flex-direction: row;
-  @media (width < ${theme.breakpoints.pc}) {
+  @media (max-width: ${theme.breakpoints.pc}) {
     flex-direction: column;
   }
 `
@@ -94,7 +99,7 @@ const IndexPage: NextPage<IndexProps> = ({ posts }) => {
         <meta property='og:url' content='https://mmengineer.blog' />
         <meta property='og:type' content='website' />
       </Head>
-      <Main className={styles.main}>
+      <Main>
         <a
           href='#'
           onClick={(e) => {

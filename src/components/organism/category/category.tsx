@@ -39,7 +39,7 @@ const CategoryButton = styled.button`
   cursor: pointer;
   font-size: ${theme.fontSizes.small}px;
   position: relative;
-  @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
+  @media (min-width: ${theme.breakpoints.tablet}) and (max-width: ${theme.breakpoints.pc}) {
     width: 612px;
   }
   &::before {

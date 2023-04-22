@@ -11,9 +11,9 @@ const ProfileFormatDesign = styled.div`
   flex-direction: column;
   justify-content: start;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
+  @media (min-width: ${theme.breakpoints.tablet}) and (max-width: ${theme.breakpoints.pc}) {
     width: 660px;
-    height: 184px;
+    height: 190px;
   }
 `
 const NameContainer = styled.div`
@@ -49,6 +49,7 @@ const NameEN = styled.h4`
 const ProfileText = styled.p`
   width: 272px;
   margin: 24px;
+  line-height: 22px;
   font-size: ${theme.fontSizes.small}px;
   @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
     width: 612px;
@@ -64,7 +65,7 @@ const Profile: React.FC = () => {
         <NameEN>KT</NameEN>
       </NameContainer>
       <ProfileText>
-        この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、
+        Webコーダー兼Webデザイナー。映像制作やイベント企画もこなす。スクール卒業後、Webサイトのパフォーマンス向上に関心を持ち、学んだ知識を発信するためブログを立ち上げた。趣味は映画鑑賞と散歩。
       </ProfileText>
     </ProfileFormatDesign>
   )

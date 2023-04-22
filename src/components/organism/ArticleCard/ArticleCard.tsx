@@ -11,7 +11,7 @@ const FormatCardDesign = styled.a`
   border: none;
   border-radius: 8px;
   width: 320px;
-  height: 320px;
+  height: 345px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -33,7 +33,7 @@ const Title = styled.h3`
   text-align: left;
   color: ${theme.colors.black};
   font-size: ${theme.fontSizes.mediumLarge};
-  line-height: ${theme.lineHeights[1]};
+  line-height: ${theme.lineHeights[2]};
 `
 
 const Source = styled.div`

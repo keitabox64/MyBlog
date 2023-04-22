@@ -14,7 +14,7 @@ const ArticleListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
-  @media (width <= ${theme.breakpoints.mobile}) {
+  @media (max-width: ${theme.breakpoints.mobile}) {
     grid-template-columns: repeat(1, 1fr);
   }
 `

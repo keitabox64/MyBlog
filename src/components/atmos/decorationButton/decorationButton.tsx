@@ -14,7 +14,7 @@ const AnchorLink = styled.a`
   &:hover {
     transform: translateY(-2px);
   }
-  @media (${theme.breakpoints.tablet} <= width < ${theme.breakpoints.pc}) {
+  @media (min-width: ${theme.breakpoints.tablet}) and (max-width: ${theme.breakpoints.pc}) {
     width: 660px;
   }
 `
