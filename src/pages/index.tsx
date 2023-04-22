@@ -6,7 +6,6 @@ import { getAggregatedPosts } from '../utils/fetchRSS'
 import { ArticleList } from '@/components/template/ArticleList/ArticleList'
 import { Footer } from '@/components/template/Footer/Footer'
 import { SideBar } from '@/components/template/SideBar/SideBar'
-import styles from '@/styles/Home.module.css'
 import { theme } from '@/themes'
 import { RssPost } from '@/utils/rss'
 
