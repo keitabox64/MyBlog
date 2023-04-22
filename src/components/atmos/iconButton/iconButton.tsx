@@ -15,7 +15,7 @@ const AnchorImage = styled.a`
 `
 
 const IconButton: React.FC<ImageProps> = ({ imageLink, imagePath }) => (
-  <AnchorImage href={imageLink}>
+  <AnchorImage href={imageLink} target='_blank'>
     <Image src={imagePath} width={25} height={25} alt='icon' />
   </AnchorImage>
 )
